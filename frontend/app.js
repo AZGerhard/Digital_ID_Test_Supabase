@@ -1,7 +1,6 @@
-// Supabase Setup
 const SUPABASE_URL = 'https://xvcripzxljsaidaekjza.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2Y3JpcHp4bGpzYWlkYWVranphIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NTg2NDAsImV4cCI6MjA4MDIzNDY0MH0.3g9SfTLdG1tgLrEYrTv9YLO3cgS0zs8IFuO0nDb8gI8';
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const SUPABASE_ANON_KEY = 'DEIN_ANON_KEY_HIER';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 function getKeyFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -12,7 +11,7 @@ async function loadProduct() {
   const key = getKeyFromUrl();
   if(!key) return;
 
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from('products_test')
     .select('*')
     .eq('key', key)
@@ -46,3 +45,6 @@ function togglePdf(){
   const container = document.getElementById("pdf-container");
   container.style.display = container.style.display === 'block' ? 'none' : 'block';
 }
+
+// sicherstellen, dass DOM geladen ist
+document.addEventListener('DOMContentLoaded', loadProduct);
