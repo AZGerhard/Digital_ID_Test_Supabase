@@ -19,7 +19,7 @@ if (path.includes("index") || path === "/" || path.endsWith(".github.io/")) {
 
 // Produktliste
 async function loadProductList() {
-    const { data, error } = await supabase.from("products").select("key, typ");
+    const { data, error } = await supabase.from("products_test").select("key, typ");
 
     if (error) return console.error(error);
 
