@@ -1,5 +1,5 @@
 // Supabase Setup
-const SUPABASE_URL = 'https://xyz.supabase.co';
+const SUPABASE_URL = 'https://xvcripzxljsaidaekjza.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2Y3JpcHp4bGpzYWlkYWVranphIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NTg2NDAsImV4cCI6MjA4MDIzNDY0MH0.3g9SfTLdG1tgLrEYrTv9YLO3cgS0zs8IFuO0nDb8gI8';
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
