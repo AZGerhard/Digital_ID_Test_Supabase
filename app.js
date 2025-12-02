@@ -73,8 +73,15 @@ async function loadProductDetail() {
     document.getElementById("pdf-frame").src = data.pdf_url;
     document.getElementById("pdf-link").href = data.pdf_url;
 
-    document.getElementById("toggle-pdf").onclick = () => {
-        const c = document.getElementById("pdf-container");
-        c.style.display = c.style.display === "block" ? "none" : "block";
-    };
+    const toggleBtn = document.getElementById("toggle-pdf");
+    if (toggleBtn) {
+        toggleBtn.onclick = () => {
+            const pdfUrl = data.pdf_url;
+            if (pdfUrl) {
+                window.open(pdfUrl, "_blank"); // öffnet in neuem Tab
+            } else {
+                alert("Keine PDF verfügbar");
+            }
+        };
+    }
 }
