@@ -70,8 +70,6 @@ async function loadProductDetail() {
     document.getElementById("schrauben").innerText = data.schrauben;
 
     // PDF
-    document.getElementById("pdf-link").href = data.pdf_url;
-
     const toggleBtn = document.getElementById("toggle-pdf");
 
     if (toggleBtn && data.pdf_url) {
