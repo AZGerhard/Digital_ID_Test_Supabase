@@ -1,6 +1,10 @@
+// import Supabase als Modul
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.0/dist/module/supabase.js'
+
+
 const SUPABASE_URL = 'https://xvcripzxljsaidaekjza.supabase.co';
 const SUPABASE_ANON_KEY = 'DEIN_ANON_KEY_HIER';
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 function getKeyFromUrl() {
   const params = new URLSearchParams(window.location.search);
