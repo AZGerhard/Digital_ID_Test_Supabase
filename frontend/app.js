@@ -13,7 +13,7 @@ async function loadProduct() {
   if(!key) return;
 
   const { data, error } = await supabase
-    .from('products')
+    .from('products_test')
     .select('*')
     .eq('key', key)
     .single();
