@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produktdetails</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produktdetails</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js" defer></script>
 </head>
 <body>
 
-<div class="container">
+<header class="header">
+    <img src="logo.png" alt="Firmenlogo" class="logo">
+    <h1>Produktdetails</h1>
+    <a href="index.html" class="back-link">← Zurück</a>
+</header>
 
-    <h1 id="typ">Produkt</h1>
-
-    <img id="produktbild" class="product-image" alt="Produktbild">
-
-    <h2>Technische Daten</h2>
-
-    <table class="product-table">
-        <tr><th>Typ</th><td id="typ2"></td></tr>
-        <tr><th>Abdichtung</th><td id="abdichtung"></td></tr>
-        <tr><th>Anschluss</th><td id="anschluss"></td></tr>
-        <tr><th>Dichtleiste</th><td id="dichtleiste"></td></tr>
-        <tr><th>Nennweite</th><td id="nennweite"></td></tr>
-        <tr><th>Nenndruck</th><td id="nenndruck"></td></tr>
-        <tr><th>Bau­länge</th><td id="baulaenge"></td></tr>
-        <tr><th>Gehäuse</th><td id="gehaeuse"></td></tr>
-        <tr><th>Küken</th><td id="kueken"></td></tr>
-        <tr><th>Deckel</th><td id="deckel"></td></tr>
-        <tr><th>Dichtbuchse</th><td id="dichtbuchse"></td></tr>
-        <tr><th>Schrauben</th><td id="schrauben"></td></tr>
-    </table>
-
-    <button id="toggle-pdf" class="btn">PDF anzeigen</button>
-
-    <div id="pdf-container" class="pdf-container">
-        <iframe id="pdf-frame" width="100%" height="600"></iframe>
-        <p><a id="pdf-link" href="" target="_blank">PDF herunterladen</a></p>
+<main>
+    <div class="product-detail">
+        <img id="produktbild" alt="Produktbild" class="product-image">
+        <h2 id="typ"></h2>
+        <div class="product-info">
+            <table>
+                <tr><th>Abdichtung</th><td id="abdichtung"></td></tr>
+                <tr><th>Anschluss</th><td id="anschluss"></td></tr>
+                <tr><th>Dichtleiste</th><td id="dichtleiste"></td></tr>
+                <tr><th>Nennweite</th><td id="nennweite"></td></tr>
+                <tr><th>Nenndruck</th><td id="nenndruck"></td></tr>
+                <tr><th>Baulänge</th><td id="baulaenge"></td></tr>
+                <tr><th>Gehäuse</th><td id="gehaeuse"></td></tr>
+                <tr><th>Küken</th><td id="kueken"></td></tr>
+                <tr><th>Deckel</th><td id="deckel"></td></tr>
+                <tr><th>Dichtbuchse</th><td id="dichtbuchse"></td></tr>
+                <tr><th>Schrauben</th><td id="schrauben"></td></tr>
+            </table>
+        </div>
+        <button id="toggle-pdf" class="btn">PDF anzeigen</button>
+        <div id="pdf-container">
+            <iframe id="pdf-frame" width="100%" height="500px"></iframe>
+            <p><a id="pdf-link" href="" target="_blank">PDF herunterladen</a></p>
+        </div>
     </div>
+</main>
 
-</div>
+<footer>
+    &copy; 2025 Dein Unternehmen
+</footer>
 
-<script type="module" src="app.js"></script>
 </body>
 </html>
