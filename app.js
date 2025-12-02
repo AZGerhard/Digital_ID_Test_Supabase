@@ -57,7 +57,6 @@ async function loadProductDetail() {
     document.getElementById("typ").innerText = data.typ;
 
     // Tabelle
-    document.getElementById("typ2").innerText = data.typ;
     document.getElementById("abdichtung").innerText = data.abdichtung;
     document.getElementById("anschluss").innerText = data.anschluss;
     document.getElementById("dichtleiste").innerText = data.dichtleiste;
