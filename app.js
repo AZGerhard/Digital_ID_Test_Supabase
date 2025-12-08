@@ -1,6 +1,4 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/esm/supabase.js";
-
-
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 
 // Supabase
