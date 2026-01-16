@@ -18,13 +18,13 @@ if (path.includes("index") || path === "/" || path.endsWith(".github.io/")) {
 
 // Produktliste
 async function loadProductList() {
-    const { data, error } = await supabase.from("products_test").select("key, typ");
+    const { data, error } = await supabase.from("product").select("serien_nr");
 
     if (error) return console.error(error);
 
     const list = document.getElementById("product-list");
     data.forEach(p => {
-        list.innerHTML += `<li><a href="artikel.html?key=${p.key}">${p.typ}</a></li>`;
+        list.innerHTML += `<li><a href="artikel.html?key=${p.serien_nr}">${p.serien_nr}</a></li>`;
     });
 }
 
@@ -39,9 +39,9 @@ async function loadProductDetail() {
     if (!key) return;
 
     const { data, error } = await supabase
-        .from("products_test")
+        .from("product")
         .select("*")
-        .eq("key", key)
+        .eq("serien_nr", key)
         .single();
 
     if (error || !data) {
@@ -56,27 +56,84 @@ async function loadProductDetail() {
     document.getElementById("typ").innerText = data.typ;
 
     // Tabelle
+
+    document.getElementById("serien_nr").innerText = data.serien_nr;
+    document.getElementById("auftrags_nr").innerText = data.auftrags_nr;
+    document.getElementById("produktionstermin").innerText = data.produktionstermin;
+    document.getElementById("artikel_nr").innerText = data.artikel_nr;
+    document.getElementById("bezeichnung").innerText = data.bezeichnung;
     document.getElementById("abdichtung").innerText = data.abdichtung;
-    document.getElementById("anschluss").innerText = data.anschluss;
-    document.getElementById("dichtleiste").innerText = data.dichtleiste;
+    document.getElementById("anschlussart").innerText = data.anschlussart;
+    document.getElementById("ausfuehrung").innerText = data.ausfuehrung;
     document.getElementById("nennweite").innerText = data.nennweite;
     document.getElementById("nenndruck").innerText = data.nenndruck;
-    document.getElementById("baulaenge").innerText = data.baulaenge;
+    document.getElementById("baulaenge_mm").innerText = data.baulaenge_mm;
+    document.getElementById("anschluss_norm").innerText = data.anschluss_norm;
     document.getElementById("gehaeuse").innerText = data.gehaeuse;
-    document.getElementById("kueken").innerText = data.kueken;
     document.getElementById("deckel").innerText = data.deckel;
+    document.getElementById("kueken").innerText = data.kueken;
     document.getElementById("dichtbuchse").innerText = data.dichtbuchse;
+    document.getElementById("flanschdurchmesser_mm").innerText = data.flanschdurchmesser_mm;
+    document.getElementById("flanschstaerke_mm").innerText = data.flanschstaerke_mm;
+    document.getElementById("kueken_wellenende").innerText = data.kueken_wellenende;
     document.getElementById("schrauben").innerText = data.schrauben;
+    document.getElementById("kupplung_schluesselform").innerText = data.kupplung_schluesselform;
+    document.getElementById("konsole_aufnahme").innerText = data.konsole_aufnahme;
+    document.getElementById("gewicht_kg").innerText = data.gewicht_kg;
+
+    // document.getElementById("az_zertifikat_url").innerText = data.az_zertifikat_url;
+    // document.getElementById("betriebsanleitung_url").innerText = data.betriebsanleitung_url;
+    // document.getElementById("datenblatt_url").innerText = data.datenblatt_url;
+    
 
     // PDF
-    const toggleBtn = document.getElementById("toggle-pdf");
+    const pdfs = [
+        { id: "az-zertifikat-btn", url: data.az_zertifikat_url, label: "AZ Zertifikat" },
+        { id: "betriebsanleitung-btn", url: data.betriebsanleitung_url, label: "Betriebsanleitung" },
+        { id: "datenblatt-btn", url: data.datenblatt_url, label: "Datenblatt" },
+    ];
 
-    if (toggleBtn && data.pdf_url) {
-        toggleBtn.addEventListener("click", () => {
-            window.open(data.pdf_url, "_blank");
-        });
-    } else if (toggleBtn) {
-        toggleBtn.disabled = true;
-        toggleBtn.innerText = "Keine PDF verfügbar";
-    }
+    pdfs.forEach(pdf => {
+        const btn = document.getElementById(pdf.id);
+        if (!btn) return; // Button existiert nicht
+
+        if (pdf.url) {
+            btn.addEventListener("click", () => window.open(pdf.url, "_blank"));
+            btn.disabled = false;
+            btn.innerText = `PDF anzeigen: ${pdf.label}`;
+        } else {
+            btn.disabled = true;
+            btn.innerText = `Keine ${pdf.label} verfügbar`;
+        }
+    });
 }
+
+/*
+++ Serien-Nr.
+++ Auftrags-Nr.
+++ interne Auftr.-Nr.
+++ Produktionstermin
+
+++ Artikel-Nr
+++ Typ
+++ Bezeichnung
+Abdichtung
+Anschlussart
+++ Ausführung
+Nennweite
+Nenndruck
+Baulänge
+++ Anschluss Norm
+Gehäuse
+Deckel
+Küken
+Dichtbuchse
+++ Flanschdurchmesser
+++ Flanschstärke
+++ Küken Wellenende
+Schrauben
+++ Kupplung Schlüsselform
+++ Konsole Aufnahme
+++ Gewicht
+
+*/

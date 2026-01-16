@@ -17,29 +17,55 @@
 
 <main>
     <div class="product-detail">
+        <!-- Produktbild -->
         <img id="produktbild" alt="Produktbild" class="product-image">
+
+        <!-- Titel -->
         <h2 id="typ"></h2>
+
+        <!-- Produkt-Tabelle -->
         <div class="product-info">
             <table>
+                <tr><th>Seriennummer</th><td id="serien_nr"></td></tr>
+                <tr><th>Auftragsnummer</th><td id="auftrags_nr"></td></tr>
+                <tr><th>Produktionstermin</th><td id="produktionstermin"></td></tr>
+                <tr><th>Artikelnummer</th><td id="artikel_nr"></td></tr>
+                <tr><th>Bezeichnung</th><td id="bezeichnung"></td></tr>
                 <tr><th>Abdichtung</th><td id="abdichtung"></td></tr>
-                <tr><th>Anschluss</th><td id="anschluss"></td></tr>
-                <tr><th>Dichtleiste</th><td id="dichtleiste"></td></tr>
+                <tr><th>Anschlussart</th><td id="anschlussart"></td></tr>
+                <tr><th>Ausführung</th><td id="ausfuehrung"></td></tr>
                 <tr><th>Nennweite</th><td id="nennweite"></td></tr>
                 <tr><th>Nenndruck</th><td id="nenndruck"></td></tr>
-                <tr><th>Baulänge</th><td id="baulaenge"></td></tr>
+                <tr><th>Baulänge (mm)</th><td id="baulaenge_mm"></td></tr>
+                <tr><th>Anschluss Norm</th><td id="anschluss_norm"></td></tr>
                 <tr><th>Gehäuse</th><td id="gehaeuse"></td></tr>
-                <tr><th>Küken</th><td id="kueken"></td></tr>
                 <tr><th>Deckel</th><td id="deckel"></td></tr>
+                <tr><th>Küken</th><td id="kueken"></td></tr>
                 <tr><th>Dichtbuchse</th><td id="dichtbuchse"></td></tr>
+                <tr><th>Flanschdurchmesser (mm)</th><td id="flanschdurchmesser_mm"></td></tr>
+                <tr><th>Flanschstärke (mm)</th><td id="flanschstaerke_mm"></td></tr>
+                <tr><th>Küken Wellenende</th><td id="kueken_wellenende"></td></tr>
                 <tr><th>Schrauben</th><td id="schrauben"></td></tr>
+                <tr><th>Kupplung Schlüsselform</th><td id="kupplung_schluesselform"></td></tr>
+                <tr><th>Konsole Aufnahme</th><td id="konsole_aufnahme"></td></tr>
+                <tr><th>Gewicht (kg)</th><td id="gewicht_kg"></td></tr>
+                <!--
+                <tr><th>AZ Zertifikat</th><td id="az_zertifikat_url"></td></tr>
+                <tr><th>Betriebsanleitung</th><td id="betriebsanleitung_url"></td></tr>
+                <tr><th>Datenblatt</th><td id="datenblatt_url"></td></tr>
+                -->
             </table>
         </div>
-        <button id="toggle-pdf" class="btn">PDF anzeigen</button>
+
+        <!-- PDF Button -->
+        <button id="az-zertifikat-btn" class="btn"></button>
+        <button id="betriebsanleitung-btn" class="btn"></button>
+        <button id="datenblatt-btn" class="btn"></button>
     </div>
 </main>
 
 <footer>
-    &copy; 2025 Gerhard Friess | Digitaler Produktpass
+    &copy; 2025 AZ Armaturen | Digitaler Produktpass
 </footer>
 
 </body>
