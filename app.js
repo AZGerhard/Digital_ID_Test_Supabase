@@ -53,7 +53,7 @@ async function loadProductDetail() {
     document.getElementById("produktbild").src = data.bild_url;
 
     // Titel
-    document.getElementById("typ").innerText = data.typ;
+    document.getElementById("typ_title").innerText = data.typ;
 
     // Tabelle
 
@@ -61,6 +61,7 @@ async function loadProductDetail() {
     document.getElementById("auftrags_nr").innerText = data.auftrags_nr;
     document.getElementById("produktionstermin").innerText = data.produktionstermin;
     document.getElementById("artikel_nr").innerText = data.artikel_nr;
+    document.getElementById("typ").innerText = data.typ;
     document.getElementById("bezeichnung").innerText = data.bezeichnung;
     document.getElementById("abdichtung").innerText = data.abdichtung;
     document.getElementById("anschlussart").innerText = data.anschlussart;
@@ -80,11 +81,6 @@ async function loadProductDetail() {
     document.getElementById("kupplung_schluesselform").innerText = data.kupplung_schluesselform;
     document.getElementById("konsole_aufnahme").innerText = data.konsole_aufnahme;
     document.getElementById("gewicht_kg").innerText = data.gewicht_kg;
-
-    // document.getElementById("az_zertifikat_url").innerText = data.az_zertifikat_url;
-    // document.getElementById("betriebsanleitung_url").innerText = data.betriebsanleitung_url;
-    // document.getElementById("datenblatt_url").innerText = data.datenblatt_url;
-    
 
     // PDF
     const pdfs = [

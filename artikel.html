@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Produktdetails</title>
+<title>Digitaler Produktpass</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="images/AZ_Logo.png">
 <script type="module" src="app.js" defer></script>
 </head>
 <body>
@@ -17,11 +18,12 @@
 
 <main>
     <div class="product-detail">
+        
+        <!-- Titel -->
+        <h2 id="typ_title"></h2>
+        
         <!-- Produktbild -->
         <img id="produktbild" alt="Produktbild" class="product-image">
-
-        <!-- Titel -->
-        <h2 id="typ"></h2>
 
         <!-- Abschnitt Artikelinformationen -->
         <div class="section">
@@ -31,6 +33,7 @@
                 <tr><th>Auftragsnummer</th><td id="auftrags_nr"></td></tr>
                 <tr><th>Produktionstermin</th><td id="produktionstermin"></td></tr>
                 <tr><th>Artikelnummer</th><td id="artikel_nr"></td></tr>
+                <tr><th>Typ</th><td id="typ"></td></tr>
                 <tr><th>Bezeichnung</th><td id="bezeichnung"></td></tr>
             </table>
         </div>
