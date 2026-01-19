@@ -23,14 +23,22 @@
         <!-- Titel -->
         <h2 id="typ"></h2>
 
-        <!-- Produkt-Tabelle -->
-        <div class="product-info">
+        <!-- Abschnitt Artikelinformationen -->
+        <div class="section">
+            <h3>Artikelinformationen</h3>
             <table>
                 <tr><th>Seriennummer</th><td id="serien_nr"></td></tr>
                 <tr><th>Auftragsnummer</th><td id="auftrags_nr"></td></tr>
                 <tr><th>Produktionstermin</th><td id="produktionstermin"></td></tr>
                 <tr><th>Artikelnummer</th><td id="artikel_nr"></td></tr>
                 <tr><th>Bezeichnung</th><td id="bezeichnung"></td></tr>
+            </table>
+        </div>
+
+        <!-- Abschnitt Technische Daten -->
+        <div class="section">
+            <h3>Technische Daten</h3>
+            <table>
                 <tr><th>Abdichtung</th><td id="abdichtung"></td></tr>
                 <tr><th>Anschlussart</th><td id="anschlussart"></td></tr>
                 <tr><th>Ausführung</th><td id="ausfuehrung"></td></tr>
@@ -49,18 +57,13 @@
                 <tr><th>Kupplung Schlüsselform</th><td id="kupplung_schluesselform"></td></tr>
                 <tr><th>Konsole Aufnahme</th><td id="konsole_aufnahme"></td></tr>
                 <tr><th>Gewicht (kg)</th><td id="gewicht_kg"></td></tr>
-                <!--
-                <tr><th>AZ Zertifikat</th><td id="az_zertifikat_url"></td></tr>
-                <tr><th>Betriebsanleitung</th><td id="betriebsanleitung_url"></td></tr>
-                <tr><th>Datenblatt</th><td id="datenblatt_url"></td></tr>
-                -->
             </table>
         </div>
 
-        <!-- PDF Button -->
-        <button id="az-zertifikat-btn" class="btn"></button>
-        <button id="betriebsanleitung-btn" class="btn"></button>
-        <button id="datenblatt-btn" class="btn"></button>
+        <!-- PDF Buttons -->
+        <button id="az-zertifikat-btn" class="btn">AZ Zertifikat</button>
+        <button id="betriebsanleitung-btn" class="btn">Betriebsanleitung</button>
+        <button id="datenblatt-btn" class="btn">Datenblatt</button>
     </div>
 </main>
 
