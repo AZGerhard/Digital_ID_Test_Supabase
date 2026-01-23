@@ -164,3 +164,61 @@ footer {
     word-break: break-word;
   }
 }
+
+
+/* Accordion Block */
+.accordion {
+  background: #fff;
+  border-radius: 12px;      /* runde Kanten */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  overflow: hidden;         /* runde Kanten wirken sauber */
+}
+
+/* Header */
+.accordion-header {
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9fb;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.2s;
+  border-radius: 12px 12px 0 0; /* nur obere Ecken */
+}
+.accordion-header:hover {
+  background: #f0f0f5;
+}
+
+/* Content */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 16px; /* horizontaler Abstand */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;       /* Abstand zwischen Buttons */
+}
+
+/* Wenn geöffnet */
+.accordion.open .accordion-content {
+  max-height: 500px; /* großzügig, je nach Inhalt anpassen */
+  padding: 12px 16px;
+}
+
+/* Buttons im Accordion */
+.accordion-content .btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  background: #007aff;
+  transition: background 0.2s;
+}
+.accordion-content .btn:hover {
+  background: #005bb5;
+}
