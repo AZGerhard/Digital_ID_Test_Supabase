@@ -114,30 +114,53 @@ footer {
 }
 
 
-/* Mobile (<500px) bleibt block */
+/* Mobile (<500px) – clean & aligned */
 @media (max-width: 500px) {
+
+  .section thead {
+    display: none;
+  }
+
   .section table,
-  .section thead,
   .section tbody,
-  .section th,
-  .section td,
   .section tr {
     display: block;
+    width: 100%;
   }
 
   .section tr {
-    margin-bottom: 12px;
+    padding: 10px 0;
     border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 8px;
   }
 
+  /* Label */
   .section th {
-    background: none;
+    display: block;
+    font-size: 0.75rem;
     font-weight: 600;
-    margin-bottom: 4px;
+    color: #6e6e73;
+
+    padding: 0;              /* ✅ gleich links wie td */
+    margin-bottom: 2px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    border: none;             /* ❗ Linie nur am tr */
   }
 
+  /* Value */
   .section td {
-    padding-left: 0;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1c1c1e;
+
+    padding: 0;               /* ✅ gleiche Startkante */
+    border: none;
+
+    white-space: normal;
+    word-break: break-word;
   }
 }
