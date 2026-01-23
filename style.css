@@ -140,15 +140,17 @@ footer {
     font-weight: 600;
     color: #6e6e73;
 
-    padding: 0;              /* ✅ gleich links wie td */
+    padding: 0;              /* gleich links wie td */
     margin-bottom: 2px;
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
-    border: none;             /* ❗ Linie nur am tr */
+    border: none;             /* Linie nur am tr */
   }
+
+
 
   /* Value */
   .section td {
@@ -157,7 +159,7 @@ footer {
     font-weight: 500;
     color: #1c1c1e;
 
-    padding: 0;               /* ✅ gleiche Startkante */
+    padding: 0;               /* gleiche Startkante */
     border: none;
 
     white-space: normal;
@@ -166,7 +168,8 @@ footer {
 }
 
 
-/* Accordion Block – rund und luftig */
+
+/* Accordion Block */
 .accordion {
   background: #fff;
   border-radius: 20px; /* größer = runder */
@@ -225,7 +228,7 @@ footer {
   padding: 12px 18px;
 }
 
-/* Buttons im Accordion – kleine iOS-Karten */
+/* Buttons im Accordion  */
 .accordion-content .btn {
   width: 100%;
   padding: 10px;
