@@ -166,59 +166,81 @@ footer {
 }
 
 
-/* Accordion Block */
+/* Accordion Block – rund und luftig */
 .accordion {
   background: #fff;
-  border-radius: 12px;      /* runde Kanten */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 20px; /* größer = runder */
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
   margin-bottom: 20px;
-  overflow: hidden;         /* runde Kanten wirken sauber */
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.accordion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Header */
+/* Header – obere Kanten rund */
 .accordion-header {
-  padding: 12px 16px;
+  padding: 14px 18px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: #f9f9fb;
+  align-items: center;
+  background: #f7f7f8;
   border-bottom: 1px solid #e0e0e0;
-  transition: background 0.2s;
-  border-radius: 12px 12px 0 0; /* nur obere Ecken */
+  border-top-left-radius: 20px;  /* obere linke Ecke */
+  border-top-right-radius: 20px; /* obere rechte Ecke */
+  transition: background 0.25s;
 }
 .accordion-header:hover {
   background: #f0f0f5;
 }
 
-/* Content */
+/* Pfeil */
+.accordion .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.accordion.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* Content – untere Kanten rund */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 16px; /* horizontaler Abstand */
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 18px;
   display: flex;
   flex-direction: column;
-  gap: 8px;       /* Abstand zwischen Buttons */
+  gap: 10px;
+  border-bottom-left-radius: 20px;  /* untere linke Ecke */
+  border-bottom-right-radius: 20px; /* untere rechte Ecke */
 }
-
-/* Wenn geöffnet */
 .accordion.open .accordion-content {
-  max-height: 500px; /* großzügig, je nach Inhalt anpassen */
-  padding: 12px 16px;
+  max-height: 500px;
+  padding: 12px 18px;
 }
 
-/* Buttons im Accordion */
+/* Buttons im Accordion – kleine iOS-Karten */
 .accordion-content .btn {
   width: 100%;
   padding: 10px;
   font-size: 0.95rem;
-  border-radius: 10px;
-  background: #007aff;
-  transition: background 0.2s;
+  border-radius: 16px;  /* runder */
+  border: 1px solid #d0d0d5;
+  background: #fafafa;
+  color: #007aff;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06); /* leicht schwebend */
 }
 .accordion-content .btn:hover {
-  background: #005bb5;
+  background: #f0f0f5;
+  color: #005bb5;
+  border-color: #c0c0c5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
