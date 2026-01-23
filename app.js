@@ -104,32 +104,9 @@ async function loadProductDetail() {
     });
 }
 
-/*
-++ Serien-Nr.
-++ Auftrags-Nr.
-++ interne Auftr.-Nr.
-++ Produktionstermin
-
-++ Artikel-Nr
-++ Typ
-++ Bezeichnung
-Abdichtung
-Anschlussart
-++ Ausführung
-Nennweite
-Nenndruck
-Baulänge
-++ Anschluss Norm
-Gehäuse
-Deckel
-Küken
-Dichtbuchse
-++ Flanschdurchmesser
-++ Flanschstärke
-++ Küken Wellenende
-Schrauben
-++ Kupplung Schlüsselform
-++ Konsole Aufnahme
-++ Gewicht
-
-*/
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("accordion-header")) {
+        const accordion = e.target.closest(".accordion");
+        accordion.classList.toggle("open");
+    }
+});

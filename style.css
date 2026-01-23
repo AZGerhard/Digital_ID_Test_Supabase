@@ -140,15 +140,17 @@ footer {
     font-weight: 600;
     color: #6e6e73;
 
-    padding: 0;              /* ✅ gleich links wie td */
+    padding: 0;              /* gleich links wie td */
     margin-bottom: 2px;
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
-    border: none;             /* ❗ Linie nur am tr */
+    border: none;             /* Linie nur am tr */
   }
+
+
 
   /* Value */
   .section td {
@@ -157,10 +159,91 @@ footer {
     font-weight: 500;
     color: #1c1c1e;
 
-    padding: 0;               /* ✅ gleiche Startkante */
+    padding: 0;               /* gleiche Startkante */
     border: none;
 
     white-space: normal;
     word-break: break-word;
   }
+}
+
+
+
+/* Accordion Block */
+.accordion {
+  background: #fff;
+  border-radius: 20px; /* größer = runder */
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.accordion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Header – obere Kanten rund */
+.accordion-header {
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f7f8;
+  border-bottom: 1px solid #e0e0e0;
+  border-top-left-radius: 20px;  /* obere linke Ecke */
+  border-top-right-radius: 20px; /* obere rechte Ecke */
+  transition: background 0.25s;
+}
+.accordion-header:hover {
+  background: #f0f0f5;
+}
+
+/* Pfeil */
+.accordion .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.accordion.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* Content – untere Kanten rund */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom-left-radius: 20px;  /* untere linke Ecke */
+  border-bottom-right-radius: 20px; /* untere rechte Ecke */
+}
+.accordion.open .accordion-content {
+  max-height: 500px;
+  padding: 12px 18px;
+}
+
+/* Buttons im Accordion  */
+.accordion-content .btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.95rem;
+  border-radius: 16px;  /* runder */
+  border: 1px solid #d0d0d5;
+  background: #fafafa;
+  color: #007aff;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06); /* leicht schwebend */
+}
+.accordion-content .btn:hover {
+  background: #f0f0f5;
+  color: #005bb5;
+  border-color: #c0c0c5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
