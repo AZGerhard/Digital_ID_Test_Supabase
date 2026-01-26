@@ -45,7 +45,23 @@ async function loadProductDetail() {
         .single();
 
     if (error || !data) {
-        document.body.innerHTML = "<h2>Produkt nicht gefunden</h2>";
+        document.body.innerHTML = `
+            <header class="header">
+                <img src="images/AZ_Logo.png" alt="Firmenlogo" class="logo">
+                <h1>Digital Product Passport</h1>
+                <a href="index.html" class="back-link">← Zurück</a>
+            </header>
+            <main>
+                <div class="error-container">
+                    <div class="error-card">
+                        <div class="error-icon">⚠️</div>
+                        <h2>Produkt nicht gefunden</h2>
+                        <p>Die gesuchte Seriennummer existiert nicht in unserer Datenbank.</p>
+                        <a href="index.html" class="btn error-btn">Zurück zur Produktliste</a>
+                    </div>
+                </div>
+            </main>
+        `;
         return;
     }
 
