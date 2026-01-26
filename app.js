@@ -54,7 +54,7 @@ async function loadProductDetail() {
 
     // Titel
     document.getElementById("typ_title").innerText = data.typ;
-
+    document.getElementById("bezeichnung_title").innerText = data.bezeichnung;
     // Tabelle
 
     document.getElementById("serien_nr").innerText = data.serien_nr;
