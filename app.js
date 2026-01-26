@@ -53,7 +53,7 @@ async function loadProductDetail() {
     document.getElementById("produktbild").src = data.bild_url;
 
     // Titel
-    document.getElementById("typ_title").innerText = data.typ;
+    // document.getElementById("typ_title").innerText = data.typ;
     document.getElementById("bezeichnung_title").innerText = data.bezeichnung;
     // Tabelle
 
