@@ -65,12 +65,22 @@ async function loadProductDetail() {
         return;
     }
 
+    // Typ Mapping
+    const typMapped = {
+        "F-2 ISO": "Durchgangs-Kükenhahn",
+        "F-2 ANSI": "Durchgangs-Kükenhahn"
+    };
+
+
+
     // Bild
     document.getElementById("produktbild").src = data.bild_url;
 
     // Titel
     // document.getElementById("typ_title").innerText = data.typ;
-    document.getElementById("bezeichnung_title").innerText = data.bezeichnung;
+    // Hier dict und mappen
+    // document.getElementById("bezeichnung_title").innerText = data.bezeichnung;
+    document.getElementById("typ_mapping").innerText = typMapped[data.typ] || data.typ;
     // Tabelle
 
     document.getElementById("serien_nr").innerText = data.serien_nr;
