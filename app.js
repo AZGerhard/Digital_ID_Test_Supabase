@@ -79,8 +79,8 @@ async function loadProductDetail() {
     // Titel
     // document.getElementById("typ_title").innerText = data.typ;
     // Hier dict und mappen
-    // document.getElementById("bezeichnung_title").innerText = data.bezeichnung;
     document.getElementById("typ_mapping").innerText = typMapped[data.typ] || data.typ;
+    document.getElementById("bezeichnung_title").innerText = data.bezeichnung;
     // Tabelle
 
     document.getElementById("serien_nr").innerText = data.serien_nr;
