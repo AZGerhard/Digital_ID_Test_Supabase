@@ -84,17 +84,14 @@ async function loadProductDetail() {
     // Tabelle
 
     document.getElementById("serien_nr").innerText = data.serien_nr;
+    
     // Seriennummer formatieren
     function formatSerial(serial) {
         if (!serial) return serial;
 
-        // Alle Nicht-Zahlen entfernen (falls nötig)
         const digits = serial.replace(/\D/g, '');
+        if (digits.length < 12) return serial;
 
-        // Prüfen, ob ausreichend lang
-        if (digits.length < 12) return serial; // fallback
-
-        // Slice entsprechend dem Muster XX/XXXXXX/XXX/X
         const part1 = digits.slice(0, 2);
         const part2 = digits.slice(2, 8);
         const part3 = digits.slice(8, 11);
@@ -103,16 +100,18 @@ async function loadProductDetail() {
         return `${part1}/${part2}/${part3}/${part4}`;
     }
 
-    
+    // Link dynamisch setzen
     (function() {
-        const serienNr = data.serien_nr; // aus Supabase geladen
+        const serienNr = data.serien_nr;
         if (!serienNr) return;
 
-        // Finde den statischen Link im HTML
-        const link = document.querySelector('div a[href*="az-armaturen-shop.com/product/ersatzdichtungen"]');
-        if (link) {
-            link.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(serienNr))}`;
-        }
+        const container = document.getElementById("dpp-ersatz-link");
+        if (!container) return;
+
+        const link = container.querySelector("a");
+        if (!link) return;
+
+        link.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(serienNr))}`;
     })();
 
     document.getElementById("auftrags_nr").innerText = data.auftrags_nr;
