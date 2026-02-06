@@ -84,28 +84,22 @@ async function loadProductDetail() {
     // Tabelle
 
     document.getElementById("serien_nr").innerText = data.serien_nr;
-    
+
     // Seriennummer formatieren
     function formatSerial(serial) {
         if (!serial) return serial;
-
         const digits = serial.replace(/\D/g, '');
         if (digits.length < 12) return serial;
-
-        const part1 = digits.slice(0, 2);
-        const part2 = digits.slice(2, 8);
-        const part3 = digits.slice(8, 11);
-        const part4 = digits.slice(11, 12);
-
-        return `${part1}/${part2}/${part3}/${part4}`;
+        return `${digits.slice(0,2)}/${digits.slice(2,8)}/${digits.slice(8,11)}/${digits.slice(11,12)}`;
     }
 
     // Link dynamisch setzen
-    const ersatzLink = document.getElementById("dpp-ersatz-a");
-    if (ersatzLink && data.serien_nr) {
-        const formattedSerial = formatSerial(data.serien_nr);
-        ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formattedSerial)}`;
+    const ersatzLink = document.querySelector("#dpp-ersatz-link a");
+    if (ersatzLink) {
+        const serialFromURL = new URLSearchParams(window.location.search).get("key") || data.serien_nr;
+        ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(serialFromURL))}`;
     }
+
 
 
     document.getElementById("auftrags_nr").innerText = data.auftrags_nr;
