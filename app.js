@@ -84,6 +84,17 @@ async function loadProductDetail() {
     // Tabelle
 
     document.getElementById("serien_nr").innerText = data.serien_nr;
+    (function() {
+        const serienNr = data.serien_nr; // aus Supabase geladen
+        if (!serienNr) return;
+
+        // Finde den statischen Link im HTML
+        const link = document.querySelector('div a[href*="az-armaturen-shop.com/product/ersatzdichtungen"]');
+        if (link) {
+            link.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(serienNr)}`;
+        }
+    })();
+
     document.getElementById("auftrags_nr").innerText = data.auftrags_nr;
     document.getElementById("produktionstermin").innerText = data.produktionstermin;
     document.getElementById("artikel_nr").innerText = data.artikel_nr;
