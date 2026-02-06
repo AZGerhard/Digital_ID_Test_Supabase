@@ -101,18 +101,12 @@ async function loadProductDetail() {
     }
 
     // Link dynamisch setzen
-    (function() {
-        const serienNr = data.serien_nr;
-        if (!serienNr) return;
+    const ersatzLink = document.getElementById("dpp-ersatz-a");
+    if (ersatzLink && data.serien_nr) {
+        const formattedSerial = formatSerial(data.serien_nr);
+        ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formattedSerial)}`;
+    }
 
-        const container = document.getElementById("dpp-ersatz-link");
-        if (!container) return;
-
-        const link = container.querySelector("a");
-        if (!link) return;
-
-        link.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(serienNr))}`;
-    })();
 
     document.getElementById("auftrags_nr").innerText = data.auftrags_nr;
     document.getElementById("produktionstermin").innerText = data.produktionstermin;
