@@ -148,7 +148,7 @@ async function loadProductDetail() {
             // const fileType = pdf.id.includes("zip") ? "Dokument Container" : "PDF";
             
             if (pdf.id === "youtube-btn") {
-                btn.innerText = `YouTube Video ansehen`;
+                btn.innerText = `Nachstellanleitung in Videoform`;
             } else if (pdf.id.includes("zip")) {
                 btn.innerText = `Dokument Container: ${pdf.label}`;
             } else {
