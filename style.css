@@ -303,3 +303,64 @@ footer {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
 }
+
+
+/* Link kopieren und weiterleiten knöpfe  */
+.share-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+    margin: 0 auto 30px auto;
+    max-width: 800px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.share-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    color: #444;
+    padding: 12px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+    flex: 1;
+    max-width: 200px;
+    text-decoration: none;
+}
+
+.share-btn:hover {
+    background: #f0f0f0;
+    border-color: #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transform: translateY(-1px);
+}
+
+.share-btn-wide {
+    width: calc(100% - 0px);
+    max-width: 412px;
+    background: white;
+    border-color: #ddd;
+    color: #444;
+    font-weight: 600;
+}
+
+.share-btn-wide:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+    color: #333;
+}

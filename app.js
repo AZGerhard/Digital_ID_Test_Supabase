@@ -94,7 +94,7 @@ async function loadProductDetail() {
     }
 
     // Link dynamisch setzen
-    const ersatzLink = document.querySelector("#dpp-ersatz-link a");
+    const ersatzLink = document.getElementById("dpp-ersatz-link");
     if (ersatzLink) {
         const serialFromURL = new URLSearchParams(window.location.search).get("key") || data.serien_nr;
         ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(serialFromURL))}`;
@@ -157,3 +157,24 @@ document.addEventListener("click", (e) => {
         accordion.classList.toggle("open");
     }
 });
+
+
+// Button zum aktuellen Link kopieren und per Mail teilen
+const copyBtn = document.getElementById("copy-link-btn");
+if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(window.location.href);
+        copyBtn.innerText = "✅ Kopiert!";
+        setTimeout(() => copyBtn.innerText = "🔗 Link kopieren", 2000);
+    });
+}
+
+const mailBtn = document.getElementById("share-mail-btn");
+if (mailBtn) {
+    mailBtn.addEventListener("click", () => {
+        const url = window.location.href;
+        const subject = encodeURIComponent("Digitaler Produktpass");
+        const body = encodeURIComponent(`Hier ist der Link zum Digitalen Produktpass:\n\n${url}`);
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    });
+}
