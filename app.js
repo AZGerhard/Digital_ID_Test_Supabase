@@ -141,7 +141,9 @@ async function loadProductDetail() {
         if (pdf.url) {
             btn.addEventListener("click", () => window.open(pdf.url, "_blank"));
             btn.disabled = false;
-            btn.innerText = `PDF anzeigen: ${pdf.label}`;
+            
+            const fileType = pdf.id.includes("zip") ? "ZIP" : "PDF";
+            btn.innerText = `${fileType} anzeigen: ${pdf.label}`;
         } else {
             btn.disabled = true;
             btn.innerText = `Keine ${pdf.label} verfügbar`;
