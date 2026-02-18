@@ -131,6 +131,7 @@ async function loadProductDetail() {
         { id: "az-zertifikat-btn", url: data.az_zertifikat_url, label: "AZ Zertifikat" },
         { id: "betriebsanleitung-btn", url: data.betriebsanleitung_url, label: "Betriebsanleitung" },
         { id: "datenblatt-btn", url: data.datenblatt_url, label: "Datenblatt" },
+        { id: "youtube-btn", url: data.yt_link, label: "YouTube Video" },
         { id: "vdi-zip-btn", url: data.vdi_zip, label: "VDI 2770 ZIP" }
     ];
 
@@ -142,8 +143,16 @@ async function loadProductDetail() {
             btn.addEventListener("click", () => window.open(pdf.url, "_blank"));
             btn.disabled = false;
             
-            const fileType = pdf.id.includes("zip") ? "ZIP" : "PDF";
-            btn.innerText = `${fileType} anzeigen: ${pdf.label}`;
+            // const fileType = pdf.id.includes("zip") ? "Dokument Container" : "PDF";
+            
+            if (pdf.id === "youtube-btn") {
+                btn.innerText = `YouTube Video ansehen`;
+            } else if (pdf.id.includes("zip")) {
+                btn.innerText = `Dokument Container: ${pdf.label}`;
+            } else {
+                btn.innerText = `PDF anzeigen: ${pdf.label}`;
+            }
+
         } else {
             btn.disabled = true;
             btn.innerText = `Keine ${pdf.label} verfügbar`;
