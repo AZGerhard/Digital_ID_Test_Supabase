@@ -33,6 +33,16 @@ function getKey() {
     return new URLSearchParams(window.location.search).get("key");
 }
 
+// Seriennummer formatieren
+function formatSerial(serial) {
+    if (!serial) return serial;
+    serial = String(serial); // In String konvertieren
+    const digits = serial.replace(/\D/g, '');
+    if (digits.length < 12) return serial;
+    return `${digits.slice(0,2)}/${digits.slice(2,8)}/${digits.slice(8,11)}/${digits.slice(11,12)}`;
+}
+
+
 // Produktdetails
 async function loadProductDetail() {
     const key = getKey();
@@ -83,15 +93,7 @@ async function loadProductDetail() {
     document.getElementById("bezeichnung_title").innerText = data.bezeichnung;
     // Tabelle
 
-    document.getElementById("serien_nr").innerText = data.serien_nr;
-
-    // Seriennummer formatieren
-    function formatSerial(serial) {
-        if (!serial) return serial;
-        const digits = serial.replace(/\D/g, '');
-        if (digits.length < 12) return serial;
-        return `${digits.slice(0,2)}/${digits.slice(2,8)}/${digits.slice(8,11)}/${digits.slice(11,12)}`;
-    }
+    document.getElementById("serien_nr").innerText = formatSerial(data.serien_nr);
 
     // Link dynamisch setzen
     const ersatzLink = document.getElementById("dpp-ersatz-link");
