@@ -131,7 +131,7 @@ async function loadProductDetail() {
         { id: "az-zertifikat-btn", url: data.az_zertifikat_url, label: "AZ Zertifikat" },
         { id: "betriebsanleitung-btn", url: data.betriebsanleitung_url, label: "Betriebsanleitung" },
         { id: "datenblatt-btn", url: data.datenblatt_url, label: "Datenblatt" },
-        { id: "vdi-zip", url: data.vdi_zip_url, label: "VDI 2770 ZIP" }
+        { id: "vdi-zip-btn", url: data.vdi_zip, label: "VDI 2770 ZIP" }
     ];
 
     pdfs.forEach(pdf => {
