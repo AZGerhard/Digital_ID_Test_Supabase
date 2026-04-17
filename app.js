@@ -58,7 +58,7 @@ function renderAnhaenge(liste, containerId) {
     container.innerHTML = "";
 
     if (!liste || liste.length === 0) {
-        container.innerHTML = `<p class="no-docs">Keine Dokumente verfügbar</p>`;
+        container.innerHTML = `<p class="no-docs">No documents available</p>`;
         return;
     }
 
@@ -68,11 +68,11 @@ function renderAnhaenge(liste, containerId) {
         const icon = iconMap[doc.type] || "📎";
 
         if (doc.type === "youtube") {
-            btn.innerText = `${icon} Nachstellanleitung in Videoform`;
+            btn.innerText = `${icon} Show Instruction Video`;
         } else if (doc.type === "zip") {
-            btn.innerText = `${icon} Dokument Container: ${doc.label}`;
+            btn.innerText = `${icon} Document Container: ${doc.label}`;
         } else {
-            btn.innerText = `${icon} PDF anzeigen: ${doc.label}`;
+            btn.innerText = `${icon} Show PDF: ${doc.label}`;
         }
 
         btn.addEventListener("click", () => window.open(doc.url, "_blank"));
