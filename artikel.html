@@ -18,17 +18,15 @@
 
 <main>
     <div class="product-detail">
-        
+
         <!-- Titel -->
-        <!-- 
-        <h2 id="typ_title"></h2>
-        -->
         <h2 id="typ_mapping"></h2>
         <h2 id="bezeichnung_title"></h2>
+
         <!-- Produktbild -->
         <img id="produktbild" alt="Produktbild" class="product-image">
 
-        <!-- Abschnitt Artikelinformationen -->
+        <!-- Artikelinformationen -->
         <div class="section">
             <h3>Artikelinformationen</h3>
             <table>
@@ -41,7 +39,7 @@
             </table>
         </div>
 
-        <!-- Abschnitt Technische Daten -->
+        <!-- Technische Daten -->
         <div class="section">
             <h3>Technische Daten</h3>
             <table>
@@ -66,18 +64,27 @@
             </table>
         </div>
 
-        <!-- PDF Buttons -->
+        <!-- Anhänge -->
         <div class="section accordion">
             <div class="accordion-header">
                 <span>📄 Anhänge</span>
                 <span class="arrow">▼</span>
             </div>
             <div class="accordion-content">
-                <button id="az-zertifikat-btn" class="btn">AZ Zertifikat</button>
-                <!-- <button id="betriebsanleitung-btn" class="btn">Betriebsanleitung</button> -->
-                <button id="datenblatt-btn" class="btn">Datenblatt</button>
-                <button id="youtube-btn" class="btn">Video Anleitung</button>
-                <button id="vdi-zip-btn" class="btn">VDI 2770 ZIP</button>
+                <!-- Buttons werden dynamisch per JS eingefügt -->
+                <div id="anhaenge-container"></div>
+            </div>
+        </div>
+
+        <!-- VDI 2770 -->
+        <div class="section accordion">
+            <div class="accordion-header">
+                <span>📦 VDI 2770 Dokumente</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+                <!-- Buttons werden dynamisch per JS eingefügt -->
+                <div id="vdi-container"></div>
             </div>
         </div>
 
@@ -91,7 +98,7 @@
             </button>
             <button id="share-mail-btn" class="share-btn">
                 <span class="share-icon">✉️</span>
-                <span>Per Mail teilen</span> <!-- Vllt nur Teilen machen  -->
+                <span>Per Mail teilen</span>
             </button>
         </div>
         <a id="dpp-ersatz-link" href="#" target="_blank" class="share-btn share-btn-wide">
