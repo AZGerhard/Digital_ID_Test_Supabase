@@ -16,9 +16,9 @@ if (path.includes("index") || path === "/" || path.endsWith(".github.io/")) {
     loadProductDetail();
 }
 
-// Produktliste
+// Produktliste 
 async function loadProductList() {
-    const { data, error } = await supabase.from("product").select("serien_nr");
+    const { data, error } = await supabase.from("product_v2").select("serien_nr");
 
     if (error) return console.error(error);
 
@@ -36,12 +36,49 @@ function getKey() {
 // Seriennummer formatieren
 function formatSerial(serial) {
     if (!serial) return serial;
-    serial = String(serial); // In String konvertieren
+    serial = String(serial);
     const digits = serial.replace(/\D/g, '');
     if (digits.length < 12) return serial;
     return `${digits.slice(0,2)}/${digits.slice(2,8)}/${digits.slice(8,11)}/${digits.slice(11,12)}`;
 }
 
+// Icon je Typ
+const iconMap = {
+    pdf:     "📄",
+    youtube: "▶️",
+    zip:     "📦",
+};
+
+// Anhänge dynamisch rendern
+function renderAnhaenge(liste, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    // Container leeren falls schon was drin ist
+    container.innerHTML = "";
+
+    if (!liste || liste.length === 0) {
+        container.innerHTML = `<p class="no-docs">No documents available</p>`;
+        return;
+    }
+
+    liste.forEach(doc => {
+        const btn = document.createElement("button");
+        btn.classList.add("btn");
+        const icon = iconMap[doc.type] || "📎";
+
+        if (doc.type === "youtube") {
+            btn.innerText = `${icon} Show Instruction Video`;
+        } else if (doc.type === "zip") {
+            btn.innerText = `${icon} Document Container: ${doc.label}`;
+        } else {
+            btn.innerText = `${icon} Show PDF: ${doc.label}`;
+        }
+
+        btn.addEventListener("click", () => window.open(doc.url, "_blank"));
+        container.appendChild(btn);
+    });
+}
 
 // Produktdetails
 async function loadProductDetail() {
@@ -49,7 +86,7 @@ async function loadProductDetail() {
     if (!key) return;
 
     const { data, error } = await supabase
-        .from("product")
+        .from("product_v2")
         .select("*")
         .eq("serien_nr", key)
         .single();
@@ -77,100 +114,66 @@ async function loadProductDetail() {
 
     // Typ Mapping
     const typMapped = {
-        "F-2 ISO": "Durchgangs-Kükenhahn",
+        "F-2 ISO":  "Durchgangs-Kükenhahn",
         "F-2 ANSI": "Durchgangs-Kükenhahn"
     };
-
-
 
     // Bild
     document.getElementById("produktbild").src = data.bild_url;
 
     // Titel
-    // document.getElementById("typ_title").innerText = data.typ;
-    // Hier dict und mappen
     document.getElementById("typ_mapping").innerText = typMapped[data.typ] || data.typ;
     document.getElementById("bezeichnung_title").innerText = data.bezeichnung;
-    // Tabelle
 
+    // Seriennummer
     document.getElementById("serien_nr").innerText = formatSerial(data.serien_nr);
 
-    // Link dynamisch setzen
+    // Ersatzlink dynamisch setzen
     const ersatzLink = document.getElementById("dpp-ersatz-link");
     if (ersatzLink) {
         const serialFromURL = new URLSearchParams(window.location.search).get("key") || data.serien_nr;
         ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(serialFromURL))}`;
     }
 
-
-
-    document.getElementById("auftrags_nr").innerText = data.auftrags_nr;
-    document.getElementById("produktionstermin").innerText = data.produktionstermin;
-    document.getElementById("artikel_nr").innerText = data.artikel_nr;
-    document.getElementById("typ").innerText = data.typ;
-    document.getElementById("bezeichnung").innerText = data.bezeichnung;
-    document.getElementById("abdichtung").innerText = data.abdichtung;
-    document.getElementById("anschlussart").innerText = data.anschlussart;
-    document.getElementById("ausfuehrung").innerText = data.ausfuehrung;
-    document.getElementById("nennweite").innerText = data.nennweite;
-    document.getElementById("nenndruck").innerText = data.nenndruck;
-    document.getElementById("baulaenge_mm").innerText = data.baulaenge_mm;
-    document.getElementById("anschluss_norm").innerText = data.anschluss_norm;
-    document.getElementById("gehaeuse").innerText = data.gehaeuse;
-    document.getElementById("deckel").innerText = data.deckel;
-    document.getElementById("kueken").innerText = data.kueken;
-    document.getElementById("dichtbuchse").innerText = data.dichtbuchse;
+    // Tabelle
+    document.getElementById("auftrags_nr").innerText           = data.auftrags_nr;
+    document.getElementById("produktionstermin").innerText     = data.produktionstermin;
+    document.getElementById("artikel_nr").innerText            = data.artikel_nr;
+    document.getElementById("typ").innerText                   = data.typ;
+    document.getElementById("bezeichnung").innerText           = data.bezeichnung;
+    document.getElementById("abdichtung").innerText            = data.abdichtung;
+    document.getElementById("anschlussart").innerText          = data.anschlussart;
+    document.getElementById("ausfuehrung").innerText           = data.ausfuehrung;
+    document.getElementById("nennweite").innerText             = data.nennweite;
+    document.getElementById("nenndruck").innerText             = data.nenndruck;
+    document.getElementById("baulaenge_mm").innerText          = data.baulaenge_mm;
+    document.getElementById("anschluss_norm").innerText        = data.anschluss_norm;
+    document.getElementById("gehaeuse").innerText              = data.gehaeuse;
+    document.getElementById("deckel").innerText                = data.deckel;
+    document.getElementById("kueken").innerText                = data.kueken;
+    document.getElementById("dichtbuchse").innerText           = data.dichtbuchse;
     document.getElementById("flanschdurchmesser_mm").innerText = data.flanschdurchmesser_mm;
-    document.getElementById("flanschstaerke_mm").innerText = data.flanschstaerke_mm;
-    document.getElementById("kueken_wellenende").innerText = data.kueken_wellenende;
-    document.getElementById("schrauben").innerText = data.schrauben;
+    document.getElementById("flanschstaerke_mm").innerText     = data.flanschstaerke_mm;
+    document.getElementById("kueken_wellenende").innerText     = data.kueken_wellenende;
+    document.getElementById("schrauben").innerText             = data.schrauben;
     document.getElementById("kupplung_schluesselform").innerText = data.kupplung_schluesselform;
-    document.getElementById("konsole_aufnahme").innerText = data.konsole_aufnahme;
-    document.getElementById("gewicht_kg").innerText = data.gewicht_kg;
+    document.getElementById("konsole_aufnahme").innerText      = data.konsole_aufnahme;
+    document.getElementById("gewicht_kg").innerText            = data.gewicht_kg;
 
-    // PDF
-    const pdfs = [
-        { id: "az-zertifikat-btn", url: data.az_zertifikat_url, label: "AZ Zertifikat" },
-        //{ id: "betriebsanleitung-btn", url: data.betriebsanleitung_url, label: "Betriebsanleitung" },
-        { id: "datenblatt-btn", url: data.datenblatt_url, label: "Datenblatt" },
-        { id: "youtube-btn", url: data.yt_link, label: "YouTube Video" },
-        { id: "vdi-zip-btn", url: data.vdi_zip, label: "VDI 2770 ZIP" }
-    ];
-
-    pdfs.forEach(pdf => {
-        const btn = document.getElementById(pdf.id);
-        if (!btn) return; // Button existiert nicht
-
-        if (pdf.url) {
-            btn.addEventListener("click", () => window.open(pdf.url, "_blank"));
-            btn.disabled = false;
-            
-            // const fileType = pdf.id.includes("zip") ? "Dokument Container" : "PDF";
-            
-            if (pdf.id === "youtube-btn") {
-                btn.innerText = `Nachstellanleitung in Videoform`;
-            } else if (pdf.id.includes("zip")) {
-                btn.innerText = `Dokument Container: ${pdf.label}`;
-            } else {
-                btn.innerText = `PDF anzeigen: ${pdf.label}`;
-            }
-
-        } else {
-            btn.disabled = true;
-            btn.innerText = `Keine ${pdf.label} verfügbar`;
-        }
-    });
+    // Anhänge dynamisch rendern
+    renderAnhaenge(data.anhaenge,     "anhaenge-container");
+    renderAnhaenge(data.vdi_anhaenge, "vdi-container");
 }
 
+// Accordion
 document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("accordion-header")) {
+    if (e.target.classList.contains("accordion-header") || e.target.closest(".accordion-header")) {
         const accordion = e.target.closest(".accordion");
         accordion.classList.toggle("open");
     }
 });
 
-
-// Button zum aktuellen Link kopieren und per Mail teilen
+// Link kopieren
 const copyBtn = document.getElementById("copy-link-btn");
 if (copyBtn) {
     copyBtn.addEventListener("click", () => {
@@ -180,6 +183,7 @@ if (copyBtn) {
     });
 }
 
+// Per Mail teilen
 const mailBtn = document.getElementById("share-mail-btn");
 if (mailBtn) {
     mailBtn.addEventListener("click", () => {
