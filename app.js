@@ -18,13 +18,13 @@ if (path.includes("index") || path === "/" || path.endsWith(".github.io/")) {
 
 // Produktliste 
 async function loadProductList() {
-    const { data, error } = await supabase.from("product_v2").select("serien_nr");
+    const { data, error } = await supabase.from("product_v2").select("public_key");
 
     if (error) return console.error(error);
 
     const list = document.getElementById("product-list");
     data.forEach(p => {
-        list.innerHTML += `<li><a href="artikel.html?key=${p.serien_nr}">${p.serien_nr}</a></li>`;
+        list.innerHTML += `<li><a href="artikel.html?key=${p.public_key}">${p.public_key}</a></li>`;
     });
 }
 
@@ -88,7 +88,7 @@ async function loadProductDetail() {
     const { data, error } = await supabase
         .from("product_v2")
         .select("*")
-        .eq("serien_nr", key)
+        .eq("public_key", key)
         .single();
 
     if (error || !data) {
@@ -132,7 +132,7 @@ async function loadProductDetail() {
     const ersatzLink = document.getElementById("dpp-ersatz-link");
     if (ersatzLink) {
         const serialFromURL = new URLSearchParams(window.location.search).get("key") || data.serien_nr;
-        ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(serialFromURL))}`;
+        ersatzLink.href = ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(data.serien_nr))}`;
     }
 
     // Tabelle
