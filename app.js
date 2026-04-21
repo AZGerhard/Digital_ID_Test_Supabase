@@ -139,7 +139,11 @@ async function loadProductDetail() {
     document.getElementById("auftrags_nr").innerText           = data.auftrags_nr;
     // document.getElementById("produktionstermin").innerText     = data.produktionstermin;
     document.getElementById("produktionstermin").innerText = 
-    new Date(data.produktionstermin).toLocaleDateString("de-DE");
+    new Date(data.produktionstermin).toLocaleDateString("de-DE", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
     document.getElementById("artikel_nr").innerText            = data.artikel_nr;
     document.getElementById("typ").innerText                   = data.typ;
     document.getElementById("bezeichnung").innerText           = data.bezeichnung;
