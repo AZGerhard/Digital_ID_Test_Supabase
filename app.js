@@ -132,7 +132,7 @@ async function loadProductDetail() {
     const ersatzLink = document.getElementById("dpp-ersatz-link");
     if (ersatzLink) {
         const serialFromURL = new URLSearchParams(window.location.search).get("key") || data.serien_nr;
-        ersatzLink.href = ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(data.serien_nr))}`;
+        ersatzLink.href = `https://az-armaturen-shop.com/product/ersatzdichtungen/?serial=${encodeURIComponent(formatSerial(data.serien_nr))}`;
     }
 
     // Tabelle
