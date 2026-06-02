@@ -165,6 +165,16 @@ async function loadProductDetail() {
     document.getElementById("kupplung_schluesselform").innerText = data.kupplung_schluesselform;
     document.getElementById("konsole_aufnahme").innerText      = data.konsole_aufnahme;
     document.getElementById("gewicht_kg").innerText            = data.gewicht_kg;
+    
+    // Auskleidung dynamisch – nur anzeigen wenn Wert vorhanden
+    const tabelle = document.getElementById("technische-tabelle");
+
+    if (data.auskleidung_1) {
+        tabelle.innerHTML += `<tr><th>Auskleidung 1</th><td>${data.auskleidung_kueken}</td></tr>`;
+    }
+    if (data.auskleidung_2) {
+        tabelle.innerHTML += `<tr><th>Auskleidung 2</th><td>${data.auskleidung_gehaeuse}</td></tr>`;
+    }
 
     // Anhänge dynamisch rendern
     renderAnhaenge(data.anhaenge,     "anhaenge-container");
