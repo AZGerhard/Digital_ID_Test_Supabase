@@ -157,15 +157,7 @@ async function loadProductDetail() {
     document.getElementById("gehaeuse").innerText              = data.gehaeuse;
     document.getElementById("deckel").innerText                = data.deckel;
     document.getElementById("kueken").innerText                = data.kueken;
-    document.getElementById("dichtbuchse").innerText           = data.dichtbuchse;
-    document.getElementById("flanschdurchmesser_mm").innerText = data.flanschdurchmesser_mm;
-    document.getElementById("flanschstaerke_mm").innerText     = data.flanschstaerke_mm;
-    document.getElementById("kueken_wellenende").innerText     = data.kueken_wellenende;
-    document.getElementById("schrauben").innerText             = data.schrauben;
-    document.getElementById("kupplung_schluesselform").innerText = data.kupplung_schluesselform;
-    document.getElementById("konsole_aufnahme").innerText      = data.konsole_aufnahme;
-    document.getElementById("gewicht_kg").innerText            = data.gewicht_kg;
-    
+
     // Auskleidung dynamisch – nur anzeigen wenn Wert vorhanden
     const tabelle = document.getElementById("technische-tabelle");
     
@@ -181,6 +173,15 @@ async function loadProductDetail() {
         tabelle.innerHTML += `<tr><th>Auskleidung Gehaeuse</th><td>${data.auskleidung_gehaeuse}</td></tr>`;
     }
 
+    document.getElementById("dichtbuchse").innerText           = data.dichtbuchse;
+    document.getElementById("flanschdurchmesser_mm").innerText = data.flanschdurchmesser_mm;
+    document.getElementById("flanschstaerke_mm").innerText     = data.flanschstaerke_mm;
+    document.getElementById("kueken_wellenende").innerText     = data.kueken_wellenende;
+    document.getElementById("schrauben").innerText             = data.schrauben;
+    document.getElementById("kupplung_schluesselform").innerText = data.kupplung_schluesselform;
+    document.getElementById("konsole_aufnahme").innerText      = data.konsole_aufnahme;
+    document.getElementById("gewicht_kg").innerText            = data.gewicht_kg;
+    
     // Anhänge dynamisch rendern
     renderAnhaenge(data.anhaenge,     "anhaenge-container");
     renderAnhaenge(data.vdi_anhaenge, "vdi-container");
