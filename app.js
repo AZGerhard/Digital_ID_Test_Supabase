@@ -163,17 +163,19 @@ async function loadProductDetail() {
 
         const kuekenRow = document.getElementById("kueken").closest("tr");
         
-        // Reihenfolge: erst Gehäuse, dann Küken (werden jeweils direkt nach Küken eingefügt)
-        if (data.auskleidung_gehaeuse) {
-            kuekenRow.insertAdjacentHTML("afterend",
-                `<tr><th>Auskleidung Gehäuse</th><td>${data.auskleidung_gehaeuse}</td></tr>`
-            );
-        }
+        // Reihenfolge: erst Gehäuse, dann Küken (umgkehrt wie in der Tabelle))
         if (data.auskleidung_kueken) {
             kuekenRow.insertAdjacentHTML("afterend",
                 `<tr><th>Auskleidung Küken</th><td>${data.auskleidung_kueken}</td></tr>`
             );
         }
+
+        if (data.auskleidung_gehaeuse) {
+            kuekenRow.insertAdjacentHTML("afterend",
+                `<tr><th>Auskleidung Gehäuse</th><td>${data.auskleidung_gehaeuse}</td></tr>`
+            );
+        }
+
     }
 
     document.getElementById("dichtbuchse").innerText           = data.dichtbuchse;
