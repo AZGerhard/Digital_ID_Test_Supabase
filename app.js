@@ -158,19 +158,22 @@ async function loadProductDetail() {
     document.getElementById("deckel").innerText                = data.deckel;
     document.getElementById("kueken").innerText                = data.kueken;
 
-    // Auskleidung dynamisch – nur anzeigen wenn Wert vorhanden
-    const tabelle = document.getElementById("technische-tabelle");
-    
     if (data.auskleidung_kueken || data.auskleidung_gehaeuse) {
-        // Dichtbuchse-Zeile verstecken
         document.getElementById("dichtbuchse").closest("tr").style.display = "none";
-    }
 
-    if (data.auskleidung_kueken) {
-        tabelle.innerHTML += `<tr><th>Auskleidung Kueken</th><td>${data.auskleidung_kueken}</td></tr>`;
-    }
-    if (data.auskleidung_gehaeuse) {
-        tabelle.innerHTML += `<tr><th>Auskleidung Gehaeuse</th><td>${data.auskleidung_gehaeuse}</td></tr>`;
+        const kuekenRow = document.getElementById("kueken").closest("tr");
+        
+        // Reihenfolge: erst Gehäuse, dann Küken (werden jeweils direkt nach Küken eingefügt)
+        if (data.auskleidung_gehaeuse) {
+            kuekenRow.insertAdjacentHTML("afterend",
+                `<tr><th>Auskleidung Gehäuse</th><td>${data.auskleidung_gehaeuse}</td></tr>`
+            );
+        }
+        if (data.auskleidung_kueken) {
+            kuekenRow.insertAdjacentHTML("afterend",
+                `<tr><th>Auskleidung Küken</th><td>${data.auskleidung_kueken}</td></tr>`
+            );
+        }
     }
 
     document.getElementById("dichtbuchse").innerText           = data.dichtbuchse;
