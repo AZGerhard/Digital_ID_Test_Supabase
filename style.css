@@ -365,3 +365,16 @@ footer {
     border-color: #bbb;
     color: #333;
 }
+
+
+.lang-switcher {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+.lang-switcher button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

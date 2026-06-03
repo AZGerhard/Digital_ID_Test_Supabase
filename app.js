@@ -1,4 +1,17 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { translations } from "./translations.js";
+
+// Sprache setzen
+let currentLang = "de";
+
+window.setLanguage = function(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+    Object.keys(t).forEach(key => {
+        const el = document.getElementById(key);
+        if (el) el.innerText = t[key];
+    });
+}
 
 
 // Supabase
@@ -138,12 +151,12 @@ async function loadProductDetail() {
     // Tabelle
     document.getElementById("auftrags_nr").innerText           = data.auftrags_nr;
     // document.getElementById("produktionstermin").innerText     = data.produktionstermin;
-    document.getElementById("produktionstermin").innerText = 
-    new Date(data.produktionstermin).toLocaleDateString("de-DE", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric"
-    });
+    document.getElementById("produktionstermin").innerText =
+        new Date(data.produktionstermin).toLocaleDateString(currentLang === "en" ? "en-GB" : "de-DE", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        });
     document.getElementById("artikel_nr").innerText            = data.artikel_nr;
     document.getElementById("typ").innerText                   = data.typ;
     document.getElementById("bezeichnung").innerText           = data.bezeichnung;
@@ -166,13 +179,12 @@ async function loadProductDetail() {
         // Reihenfolge: erst Gehäuse, dann Küken (umgkehrt wie in der Tabelle))
         if (data.auskleidung_kueken) {
             kuekenRow.insertAdjacentHTML("afterend",
-                `<tr><th>Auskleidung Küken</th><td>${data.auskleidung_kueken}</td></tr>`
+                `<tr><th id="label_auskleidung_kueken">Auskleidung Küken</th><td>${data.auskleidung_kueken}</td></tr>`
             );
         }
-
         if (data.auskleidung_gehaeuse) {
             kuekenRow.insertAdjacentHTML("afterend",
-                `<tr><th>Auskleidung Gehäuse</th><td>${data.auskleidung_gehaeuse}</td></tr>`
+                `<tr><th id="label_auskleidung_gehaeuse">Auskleidung Gehäuse</th><td>${data.auskleidung_gehaeuse}</td></tr>`
             );
         }
 

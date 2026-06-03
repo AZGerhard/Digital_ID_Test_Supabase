@@ -12,7 +12,11 @@
 
 <header class="header">
     <img src="images/AZ_Logo.png" alt="Firmenlogo" class="logo">
-    <h1>Digitaler Produkt Pass</h1>
+    <h1 id="page_title">Digitaler Produkt Pass</h1>
+    <div class="lang-switcher">
+        <button onclick="setLanguage('de')">🇩🇪</button>
+        <button onclick="setLanguage('en')">🇬🇧</button>
+    </div>
     <a href="index.html" class="back-link">← Zurück</a>
 </header>
 
@@ -28,50 +32,49 @@
 
         <!-- Artikelinformationen -->
         <div class="section">
-            <h3>Artikel Information</h3>
+            <h3 id="section_artikel_info">Artikel Information</h3>
             <table>
-                <tr><th>Seriennummer</th><td id="serien_nr"></td></tr>
-                <tr><th>Auftragsnummer</th><td id="auftrags_nr"></td></tr>
-                <tr><th>Produktionstermin</th><td id="produktionstermin"></td></tr>
-                <tr><th>Artikelnummer</th><td id="artikel_nr"></td></tr>
-                <tr><th>Typ</th><td id="typ"></td></tr>
-                <tr><th>Bezeichnung</th><td id="bezeichnung"></td></tr>
+                <tr><th id="label_serien_nr">Seriennummer</th><td id="serien_nr"></td></tr>
+                <tr><th id="label_auftrags_nr">Auftragsnummer</th><td id="auftrags_nr"></td></tr>
+                <tr><th id="label_produktionstermin">Produktionstermin</th><td id="produktionstermin"></td></tr>
+                <tr><th id="label_artikel_nr">Artikelnummer</th><td id="artikel_nr"></td></tr>
+                <tr><th id="label_typ">Typ</th><td id="typ"></td></tr>
+                <tr><th id="label_bezeichnung">Bezeichnung</th><td id="bezeichnung"></td></tr>
             </table>
         </div>
 
         <!-- Technische Daten -->
         <div class="section">
-            <h3>Technische Daten</h3>
-            <table id = "technische-tabelle">
-                <tr><th>Abdichtung</th><td id="abdichtung"></td></tr>
-                <tr><th>Anschlussart</th><td id="anschlussart"></td></tr>
-                <tr><th>Ausführung</th><td id="ausfuehrung"></td></tr>
-                <tr><th>Nennweite</th><td id="nennweite"></td></tr>
-                <tr><th>Nenndruck</th><td id="nenndruck"></td></tr>
-                <tr><th>Baulänge (mm)</th><td id="baulaenge_mm"></td></tr>
-                <tr><th>Anschluss Norm</th><td id="anschluss_norm"></td></tr>
-                <tr><th>Gehäuse</th><td id="gehaeuse"></td></tr>
-                <tr><th>Deckel</th><td id="deckel"></td></tr>
-                <tr><th>Küken</th><td id="kueken"></td></tr>
-                <tr><th>Dichtbuchse</th><td id="dichtbuchse"></td></tr>
-                <tr><th>Flanschdurchmesser (mm)</th><td id="flanschdurchmesser_mm"></td></tr>
-                <tr><th>Flanschstärke (mm)</th><td id="flanschstaerke_mm"></td></tr>
-                <tr><th>Küken Wellenende</th><td id="kueken_wellenende"></td></tr>
-                <tr><th>Schrauben</th><td id="schrauben"></td></tr>
-                <tr><th>Kupplung Schlüsselform</th><td id="kupplung_schluesselform"></td></tr>
-                <tr><th>Konsole Aufnahme</th><td id="konsole_aufnahme"></td></tr>
-                <tr><th>Gewicht (kg)</th><td id="gewicht_kg"></td></tr>
+            <h3 id="section_technische_daten">Technische Daten</h3>
+            <table id="technische-tabelle">
+                <tr><th id="label_abdichtung">Abdichtung</th><td id="abdichtung"></td></tr>
+                <tr><th id="label_anschlussart">Anschlussart</th><td id="anschlussart"></td></tr>
+                <tr><th id="label_ausfuehrung">Ausführung</th><td id="ausfuehrung"></td></tr>
+                <tr><th id="label_nennweite">Nennweite</th><td id="nennweite"></td></tr>
+                <tr><th id="label_nenndruck">Nenndruck</th><td id="nenndruck"></td></tr>
+                <tr><th id="label_baulaenge_mm">Baulänge (mm)</th><td id="baulaenge_mm"></td></tr>
+                <tr><th id="label_anschluss_norm">Anschluss Norm</th><td id="anschluss_norm"></td></tr>
+                <tr><th id="label_gehaeuse">Gehäuse</th><td id="gehaeuse"></td></tr>
+                <tr><th id="label_deckel">Deckel</th><td id="deckel"></td></tr>
+                <tr><th id="label_kueken">Küken</th><td id="kueken"></td></tr>
+                <tr><th id="label_dichtbuchse">Dichtbuchse</th><td id="dichtbuchse"></td></tr>
+                <tr><th id="label_flanschdurchmesser_mm">Flanschdurchmesser (mm)</th><td id="flanschdurchmesser_mm"></td></tr>
+                <tr><th id="label_flanschstaerke_mm">Flanschstärke (mm)</th><td id="flanschstaerke_mm"></td></tr>
+                <tr><th id="label_kueken_wellenende">Küken Wellenende</th><td id="kueken_wellenende"></td></tr>
+                <tr><th id="label_schrauben">Schrauben</th><td id="schrauben"></td></tr>
+                <tr><th id="label_kupplung_schluesselform">Kupplung Schlüsselform</th><td id="kupplung_schluesselform"></td></tr>
+                <tr><th id="label_konsole_aufnahme">Konsole Aufnahme</th><td id="konsole_aufnahme"></td></tr>
+                <tr><th id="label_gewicht_kg">Gewicht (kg)</th><td id="gewicht_kg"></td></tr>
             </table>
         </div>
 
         <!-- Anhänge -->
         <div class="section accordion">
             <div class="accordion-header">
-                <span>📄 Anhänge</span>
+                <span id="section_anhaenge">📄 Anhänge</span>
                 <span class="arrow">▼</span>
             </div>
             <div class="accordion-content">
-                <!-- Buttons werden dynamisch per JS eingefügt -->
                 <div id="anhaenge-container"></div>
             </div>
         </div>
@@ -79,11 +82,10 @@
         <!-- VDI 2770 -->
         <div class="section accordion">
             <div class="accordion-header">
-                <span>📦 VDI 2770 Paket</span>
+                <span id="section_vdi">📦 VDI 2770 Paket</span>
                 <span class="arrow">▼</span>
             </div>
             <div class="accordion-content">
-                <!-- Buttons werden dynamisch per JS eingefügt -->
                 <div id="vdi-container"></div>
             </div>
         </div>
@@ -94,16 +96,16 @@
         <div class="share-row">
             <button id="copy-link-btn" class="share-btn">
                 <span class="share-icon">🔗</span>
-                <span>Link kopieren</span>
+                <span id="btn_copy_link">Link kopieren</span>
             </button>
             <button id="share-mail-btn" class="share-btn">
                 <span class="share-icon">✉️</span>
-                <span>Per Mail teilen</span>
+                <span id="btn_share_mail">Per Mail teilen</span>
             </button>
         </div>
         <a id="dpp-ersatz-link" href="#" target="_blank" class="share-btn share-btn-wide">
             <span class="share-icon">🛒</span>
-            <span>Ersatzdichtung bestellen</span>
+            <span id="btn_ersatz">Ersatzdichtung bestellen</span>
         </a>
     </div>
 
