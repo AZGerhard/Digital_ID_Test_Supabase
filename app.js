@@ -169,11 +169,11 @@ async function loadProductDetail() {
     // Auskleidung dynamisch – nur anzeigen wenn Wert vorhanden
     const tabelle = document.getElementById("technische-tabelle");
 
-    if (data.auskleidung_1) {
-        tabelle.innerHTML += `<tr><th>Auskleidung 1</th><td>${data.auskleidung_kueken}</td></tr>`;
+    if (data.auskleidung_kueken) {
+        tabelle.innerHTML += `<tr><th>Auskleidung Kueken</th><td>${data.auskleidung_kueken}</td></tr>`;
     }
-    if (data.auskleidung_2) {
-        tabelle.innerHTML += `<tr><th>Auskleidung 2</th><td>${data.auskleidung_gehaeuse}</td></tr>`;
+    if (data.auskleidung_gehaeuse) {
+        tabelle.innerHTML += `<tr><th>Auskleidung Gehaeuse</th><td>${data.auskleidung_gehaeuse}</td></tr>`;
     }
 
     // Anhänge dynamisch rendern
