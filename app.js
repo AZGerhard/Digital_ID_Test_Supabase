@@ -168,6 +168,11 @@ async function loadProductDetail() {
     
     // Auskleidung dynamisch – nur anzeigen wenn Wert vorhanden
     const tabelle = document.getElementById("technische-tabelle");
+    
+    if (data.auskleidung_kueken || data.auskleidung_gehaeuse) {
+        // Dichtbuchse-Zeile verstecken
+        document.getElementById("dichtbuchse").closest("tr").style.display = "none";
+    }
 
     if (data.auskleidung_kueken) {
         tabelle.innerHTML += `<tr><th>Auskleidung Kueken</th><td>${data.auskleidung_kueken}</td></tr>`;
