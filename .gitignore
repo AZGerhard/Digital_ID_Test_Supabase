@@ -1,3 +1,4 @@
 upload_to_supabase.py
 .env
 test.py
+pdf_merger.py
