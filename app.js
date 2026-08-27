@@ -3,7 +3,6 @@ import { translations } from "./translations.js";
 
 // Sprache setzen
 let currentLang = "de";
-let currentTyp = null;
 
 window.setLanguage = function(lang) {
     currentLang = lang;
@@ -12,26 +11,6 @@ window.setLanguage = function(lang) {
         const el = document.getElementById(key);
         if (el) el.innerText = t[key];
     });
-    applyMopLabels();
-}
-
-// MOP Labels: Einheit (°C/bar vs. °F/psi) hängt am Typ (ISO/ANSI), nicht an der Sprache -
-// daher bewusst getrennt von translations.js gehalten (keine 1:1-Sprachübersetzung)
-const mopLabels = {
-    de: { iso: { temp: "MOP Temperatur (°C)", bar: "MOP Druck (bar)" },
-          ansi: { temp: "MOP Temperatur (°F)", bar: "MOP Druck (psi)" } },
-    en: { iso: { temp: "MOP Temperature (°C)", bar: "MOP Pressure (bar)" },
-          ansi: { temp: "MOP Temperature (°F)", bar: "MOP Pressure (psi)" } },
-};
-
-function applyMopLabels() {
-    const isAnsi = typeof currentTyp === "string" && currentTyp.toUpperCase().includes("ANSI");
-    const labels = mopLabels[currentLang][isAnsi ? "ansi" : "iso"];
-
-    const tempLabel = document.getElementById("label_mop_temp");
-    const barLabel = document.getElementById("label_mop_bar");
-    if (tempLabel) tempLabel.innerText = labels.temp;
-    if (barLabel) barLabel.innerText = labels.bar;
 }
 
 
@@ -152,8 +131,6 @@ async function loadProductDetail() {
         "F-2 ANSI": "Durchgangs-Kükenhahn"
     };
 
-    currentTyp = data.typ;
-    applyMopLabels();
 
     // Bild
     document.getElementById("produktbild").src = data.bild_url;
