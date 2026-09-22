@@ -68,7 +68,7 @@ export const translations = {
         "label_serien_nr":               "Serial No",
         "label_auftrags_nr":             "Job No",
         "label_produktionstermin":       "Production Date",
-        "label_artikel_nr":              "SUK",
+        "label_artikel_nr":              "SKU",
         "label_typ":                     "Type",
         "label_bezeichnung":             "Description",
 
