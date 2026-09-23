@@ -23,22 +23,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // Router
 const path = window.location.pathname;
 
-if (path.includes("index") || path === "/" || path.endsWith(".github.io/")) {
-    loadProductList();
-} else if (path.includes("artikel.html")) {
+if (path.includes("artikel.html")) {
     loadProductDetail();
-}
-
-// Produktliste 
-async function loadProductList() {
-    const { data, error } = await supabase.from("product_v2").select("public_key");
-
-    if (error) return console.error(error);
-
-    const list = document.getElementById("product-list");
-    data.forEach(p => {
-        list.innerHTML += `<li><a href="artikel.html?key=${p.public_key}">${p.public_key}</a></li>`;
-    });
 }
 
 // Key aus URL
@@ -93,10 +79,30 @@ function renderAnhaenge(liste, containerId) {
     });
 }
 
+// Fehlerseite (kein oder ungültiger Key)
+function showNotFound() {
+    document.body.innerHTML = `
+        <header class="header">
+            <img src="images/AZ_Logo.png" alt="Firmenlogo" class="logo">
+            <h1>Digital Product Passport</h1>
+        </header>
+        <main>
+            <div class="error-container">
+                <div class="error-card">
+                    <div class="error-icon">⚠️</div>
+                    <h2>Produkt nicht gefunden</h2>
+                    <p>Die gesuchte Seriennummer existiert nicht in unserer Datenbank.</p>
+                    <a href="https://az-armaturen.de/de/" class="btn error-btn">Zur AZ Armaturen Website</a>
+                </div>
+            </div>
+        </main>
+    `;
+}
+
 // Produktdetails
 async function loadProductDetail() {
     const key = getKey();
-    if (!key) return;
+    if (!key) return showNotFound();
 
     const { data, error } = await supabase
         .from("product_v2")
@@ -104,26 +110,7 @@ async function loadProductDetail() {
         .eq("public_key", key)
         .single();
 
-    if (error || !data) {
-        document.body.innerHTML = `
-            <header class="header">
-                <img src="images/AZ_Logo.png" alt="Firmenlogo" class="logo">
-                <h1>Digital Product Passport</h1>
-                <a href="index.html" class="back-link">← Zurück</a>
-            </header>
-            <main>
-                <div class="error-container">
-                    <div class="error-card">
-                        <div class="error-icon">⚠️</div>
-                        <h2>Produkt nicht gefunden</h2>
-                        <p>Die gesuchte Seriennummer existiert nicht in unserer Datenbank.</p>
-                        <a href="index.html" class="btn error-btn">Zurück zur Produktliste</a>
-                    </div>
-                </div>
-            </main>
-        `;
-        return;
-    }
+    if (error || !data) return showNotFound();
 
     // Typ Mapping
     const typMapped = {
