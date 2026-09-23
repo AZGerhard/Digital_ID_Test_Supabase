@@ -49,7 +49,7 @@ export const translations = {
         // Fehlerseite
         "error_title":                   "Produkt nicht gefunden",
         "error_text":                    "Die gesuchte Seriennummer existiert nicht in unserer Datenbank.",
-        "error_btn":                     "Zurück zur Produktliste",
+        "error_btn":                     "Zur AZ Armaturen Website",
 
         // Anhänge
         "no_docs":                       "Keine Dokumente vorhanden",
@@ -105,7 +105,7 @@ export const translations = {
         // Fehlerseite
         "error_title":                   "Product not found",
         "error_text":                    "The requested serial number does not exist in our database.",
-        "error_btn":                     "Back to product list",
+        "error_btn":                     "Visit AZ Armaturen website",
 
         // Anhänge
         "no_docs":                       "No documents available",
