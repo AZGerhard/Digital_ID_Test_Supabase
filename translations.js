@@ -39,7 +39,7 @@ export const translations = {
         "label_konsole_aufnahme":        "Konsole Aufnahme",
         "label_gewicht_kg":              "Gewicht (kg)",
         "label_mop_temp":                "MOP Temperatur",
-        "label_mop_bar":                 "MOP Druck",
+        "label_mop_druck":                 "MOP Druck",
 
         // Share Bar
         "btn_copy_link":                 "Link kopieren",
@@ -94,7 +94,7 @@ export const translations = {
         "label_konsole_aufnahme":        "Console Mounting Interface",
         "label_gewicht_kg":              "Weight (kg)",
         "label_mop_temp":                "MOP Temperature",
-        "label_mop_bar":                 "MOP Pressure",
+        "label_mop_druck":               "MOP Pressure",
 
 
         // Share Bar

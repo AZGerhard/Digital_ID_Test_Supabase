@@ -187,7 +187,7 @@ async function loadProductDetail() {
     document.getElementById("konsole_aufnahme").innerText      = data.konsole_aufnahme;
     document.getElementById("gewicht_kg").innerText            = data.gewicht_kg;
     document.getElementById("mop_temp").innerText            = data.mop_temp;
-    document.getElementById("mop_bar").innerText            = data.mop_bar;
+    document.getElementById("mop_druck").innerText            = data.mop_druck;
     
     // Anhänge dynamisch rendern
     renderAnhaenge(data.anhaenge,     "anhaenge-container");
